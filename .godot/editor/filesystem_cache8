@@ -1,0 +1,10 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1723252310
+icon.svg::CompressedTexture2D::312003246947293564::1722892734::1722892744::1::::<><>::
+README.md::TextFile::-1::1723094274::0::1::::<><>::
+::res://Assets/::1723251987
+level_1.tscn::PackedScene::2505017991707972330::1723251674::0::1::::<><>::uid://dqoryjxrfmo7q::::res://Assets/Player.tscn<>res://Scripts/ThirdPersonCamera.gd
+Player.tscn::PackedScene::8312260394795631256::1723251594::0::1::::<><>::res://Scripts/BP_PlayerController.gd
+::res://Scripts/::1723251987
+BP_PlayerController.gd::GDScript::-1::1723088956::0::1::::<>CharacterBody3D<>::
+ThirdPersonCamera.gd::GDScript::-1::1723089136::0::1::::<>Node3D<>::
