@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://4nrcuyqjw3oy"
-path="res://.godot/imported/mannequiny-0.4.0.glb-d58ff0f31e49342e5513889a2a1b2803.scn"
+path="res://.godot/imported/mannequiny-0.4.0.glb-4d729fc9d44f97992916cda94fd627f6.scn"
 
 [deps]
 
-source_file="res://Scripts/Player/mannequiny/mannequiny-0.4.0.glb"
-dest_files=["res://.godot/imported/mannequiny-0.4.0.glb-d58ff0f31e49342e5513889a2a1b2803.scn"]
+source_file="res://Nodes and Scripts/Player/Animation/mannequiny-0.4.0.glb"
+dest_files=["res://.godot/imported/mannequiny-0.4.0.glb-4d729fc9d44f97992916cda94fd627f6.scn"]
 
 [params]
 

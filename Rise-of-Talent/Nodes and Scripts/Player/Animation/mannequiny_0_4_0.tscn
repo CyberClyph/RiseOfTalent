@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ck5ehjwxiv8my"]
 
-[ext_resource type="PackedScene" uid="uid://bljvqqqodqaj5" path="res://Scripts/Player/Animation/animation_player.tscn" id="1_6ce30"]
+[ext_resource type="PackedScene" uid="uid://bljvqqqodqaj5" path="res://Nodes and Scripts/Player/Animation/animation_player.tscn" id="1_t1w3r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bptku"]
 resource_name = "Azul"
@@ -539,4 +539,4 @@ bones/44/scale = Vector3(1, 1, 1)
 mesh = SubResource("ArrayMesh_xcmdw")
 skin = SubResource("Skin_5vg08")
 
-[node name="AnimationPlayer" parent="." instance=ExtResource("1_6ce30")]
+[node name="AnimationPlayer" parent="." instance=ExtResource("1_t1w3r")]
