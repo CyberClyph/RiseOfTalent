@@ -1,24 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl8k1cgq8ekh1"]
+[gd_scene load_steps=5 format=3 uid="uid://bl8k1cgq8ekh1"]
 
+[ext_resource type="Script" path="res://scene.gd" id="1_acsid"]
 [ext_resource type="PackedScene" uid="uid://c75s2m6eic1vo" path="res://addons/ThirdPersonTemplate/Character/Nodes/PlayerTemplate.tscn" id="1_rrjq8"]
+[ext_resource type="PackedScene" uid="uid://by6byusn0rj2" path="res://ai_enemy.tscn" id="2_gr6wb"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_8af7u"]
+vertices = PackedVector3Array(-24.7891, 0.268808, -24.3468, -24.7891, 0.268808, 23.4032, 22.9609, 0.268808, 23.4032, 22.9609, 0.268808, -24.3468)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Scene" type="Node3D"]
-
-[node name="Level_1" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03906, 2.02424, -0.314566)
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Level_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00543213, -0.282227)
-size = Vector3(50, 5, 50)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Level_1/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46055, 0)
-operation = 2
-size = Vector3(49, 9, 49)
+script = ExtResource("1_acsid")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0329633, 0.999457, 0, -0.999457, -0.0329633, 0, 11.5712, 0)
 shadow_enabled = true
 
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_8af7u")
+
+[node name="Level_1" type="CSGCombiner3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03906, 2.02424, -0.314566)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Level_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00543213, -0.282227)
+size = Vector3(50, 5, 50)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Level_1/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46055, 0)
+operation = 2
+size = Vector3(49, 9, 49)
+
 [node name="PlayerTemplate" parent="." instance=ExtResource("1_rrjq8")]
+
+[node name="AI_Enemy" parent="." instance=ExtResource("2_gr6wb")]
+transform = Transform3D(-0.993351, 0, -0.115128, 0, 1, 0, 0.115128, 0, -0.993351, 0, 0, 7.69513)
