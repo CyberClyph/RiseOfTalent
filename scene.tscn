@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl8k1cgq8ekh1"]
+[gd_scene load_steps=4 format=3 uid="uid://bl8k1cgq8ekh1"]
 
-[ext_resource type="Script" path="res://scene.gd" id="1_acsid"]
 [ext_resource type="PackedScene" uid="uid://c75s2m6eic1vo" path="res://addons/ThirdPersonTemplate/Character/Nodes/PlayerTemplate.tscn" id="1_rrjq8"]
 [ext_resource type="PackedScene" uid="uid://by6byusn0rj2" path="res://ai_enemy.tscn" id="2_gr6wb"]
 
@@ -9,7 +8,6 @@ vertices = PackedVector3Array(-24.7891, 0.268808, -24.3468, -24.7891, 0.268808, 
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Scene" type="Node3D"]
-script = ExtResource("1_acsid")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0329633, 0.999457, 0, -0.999457, -0.0329633, 0, 11.5712, 0)
@@ -35,3 +33,4 @@ size = Vector3(49, 9, 49)
 
 [node name="AI_Enemy" parent="." instance=ExtResource("2_gr6wb")]
 transform = Transform3D(-0.993351, 0, -0.115128, 0, 1, 0, 0.115128, 0, -0.993351, 0, 0, 7.69513)
+player_path = NodePath("../PlayerTemplate")
