@@ -15,10 +15,6 @@ run/main_scene="res://scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
-[filesystem]
-
-import/fbx/enabled=false
-
 [input]
 
 sprint={

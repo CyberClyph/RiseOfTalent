@@ -1,5 +1,9 @@
 extends CharacterBody3D
 
+#Health and Damage
+const hit_stagger = 8.0
+@onready var healthbar = $HealthBar
+
 # Grabs the prebuilt AnimationTree 
 @onready var PlayerAnimationTree = $AnimationTree.get_path()
 @onready var animation_tree = get_node(PlayerAnimationTree)
@@ -15,6 +19,10 @@ extends CharacterBody3D
 @export var walk_speed = 1.3
 @export var run_speed = 5.5
 @export var dash_power = 12 # Controls roll and big attack speed boosts
+
+
+#signal
+signal player_hit
 
 # Animation node names
 var roll_node_name = "Roll"
@@ -45,6 +53,7 @@ var acceleration = int()
 
 func _ready(): # Camera based Rotation
 	direction = Vector3.BACK.rotated(Vector3.UP, $Camroot/h.global_transform.basis.get_euler().y)
+	
 
 func _input(event): # All major mouse and button input events
 	if event is InputEventMouseMotion:
@@ -191,4 +200,6 @@ func _physics_process(delta):
 	# Attacks and roll don't use these boolean conditions, instead
 	# they use "travel" or "start" to one-shot their animations.
 	
-	
+func hit(dir):
+	emit_signal("player_hit")
+	velocity += dir * hit_stagger
