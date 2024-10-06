@@ -1,0 +1,24 @@
+[gd_scene load_steps=8 format=3 uid="uid://o1b0l4a1rc2l"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_j8td6"]
+[ext_resource type="PackedScene" uid="uid://cuu1gic1th35h" path="res://Player/input_handler.tscn" id="2_8rjpc"]
+[ext_resource type="PackedScene" uid="uid://tqdh7k0v8ggc" path="res://Player/attack.tscn" id="3_8xolp"]
+[ext_resource type="PackedScene" uid="uid://u18ve8b0o5wk" path="res://Player/PlayerMovement.tscn" id="3_nslfl"]
+[ext_resource type="PackedScene" uid="uid://c241bhu2gi5d0" path="res://Player/player_attack.tscn" id="4_6lkib"]
+[ext_resource type="PackedScene" uid="uid://cudhq4i6jyeqs" path="res://Player/health.tscn" id="5_hbuwd"]
+[ext_resource type="PackedScene" uid="uid://b2d4t18206xjj" path="res://Player/resource.tscn" id="6_bppcn"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_j8td6")
+
+[node name="InputHandler" parent="." instance=ExtResource("2_8rjpc")]
+
+[node name="PlayerMovement" parent="." instance=ExtResource("3_nslfl")]
+
+[node name="Health" parent="." instance=ExtResource("5_hbuwd")]
+
+[node name="PlayerAttack" parent="." instance=ExtResource("4_6lkib")]
+
+[node name="Resource" parent="." instance=ExtResource("6_bppcn")]
+
+[node name="Attack" parent="Resource" instance=ExtResource("3_8xolp")]

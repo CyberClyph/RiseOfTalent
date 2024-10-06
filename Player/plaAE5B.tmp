@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://o1b0l4a1rc2l"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_ahcop"]
+[ext_resource type="PackedScene" uid="uid://cuu1gic1th35h" path="res://Player/input_handler.tscn" id="2_8rjpc"]
+[ext_resource type="PackedScene" uid="uid://u18ve8b0o5wk" path="res://Player/PlayerMovement.tscn" id="3_nslfl"]
+[ext_resource type="PackedScene" uid="uid://cudhq4i6jyeqs" path="res://Player/health.tscn" id="5_hbuwd"]
+[ext_resource type="Script" path="res://Player/AttaackSystem.gd" id="6_i7lgo"]
+[ext_resource type="PackedScene" uid="uid://ctjs2urjfjea5" path="res://Player/HitBox.tscn" id="8_khh0j"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hmt4e"]
+radius = 1.32912
+
+[node name="Player" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07615, 0)
+script = ExtResource("1_ahcop")
+
+[node name="InputHandler" parent="." instance=ExtResource("2_8rjpc")]
+
+[node name="PlayerMovement" parent="." instance=ExtResource("3_nslfl")]
+
+[node name="MeshInstance3D" parent="PlayerMovement" index="0"]
+layers = 1
+
+[node name="HitBox" parent="." instance=ExtResource("8_khh0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0832454, 0)
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("SphereShape3D_hmt4e")
+
+[node name="Health" parent="." instance=ExtResource("5_hbuwd")]
+
+[node name="AttaackSystem" type="Node" parent="."]
+script = ExtResource("6_i7lgo")
+
+[editable path="PlayerMovement"]
+[editable path="HitBox"]

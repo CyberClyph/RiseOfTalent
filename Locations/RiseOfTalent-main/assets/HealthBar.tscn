@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi77bgckvp5lg"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_vl504"]
+[ext_resource type="Texture2D" uid="uid://da2d3uot1er7h" path="res://assets/HP.png" id="2_waehm"]
+[ext_resource type="Texture2D" uid="uid://cuqj3c3bammwo" path="res://assets/HP Border.png" id="3_qwkwm"]
+[ext_resource type="Texture2D" uid="uid://va2832m3cb8v" path="res://assets/HP Drain.png" id="4_usico"]
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 930.0
+offset_bottom = 413.0
+script = ExtResource("1_vl504")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 201.0
+offset_right = 927.0
+offset_bottom = 455.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = ExtResource("2_waehm")
+texture_over = ExtResource("3_qwkwm")
+texture_progress = ExtResource("4_usico")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
