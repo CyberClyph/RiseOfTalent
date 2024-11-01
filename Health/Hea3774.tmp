@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi77bgckvp5lg"]
+
+[ext_resource type="Texture2D" uid="uid://da2d3uot1er7h" path="res://Health/HP.png" id="2_waehm"]
+[ext_resource type="Texture2D" uid="uid://cuqj3c3bammwo" path="res://Health/HP Border.png" id="3_qwkwm"]
+[ext_resource type="Texture2D" uid="uid://va2832m3cb8v" path="res://Health/HP Drain.png" id="4_usico"]
+
+[node name="HealthBar" type="TextureProgressBar"]
+offset_left = 11.0
+offset_top = 6.0
+offset_right = 249.0
+offset_bottom = 85.0
+value = 100.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = ExtResource("4_usico")
+texture_over = ExtResource("3_qwkwm")
+texture_progress = ExtResource("2_waehm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 15.0
+offset_right = 226.0
+offset_bottom = 38.0

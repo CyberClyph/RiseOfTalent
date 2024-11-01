@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi3i7fwt8dc6b"]
+[gd_scene load_steps=3 format=3 uid="uid://bi3i7fwt8dc6b"]
 
 [ext_resource type="PackedScene" uid="uid://bp361wj37jqu4" path="res://Player/Player.tscn" id="1_5bpsj"]
 [ext_resource type="PackedScene" uid="uid://c4ly8bgaikk0f" path="res://Enemy.tscn" id="2_7oapg"]
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_aj6wu"]
 
 [node name="Arena1" type="Node3D"]
 
@@ -11,18 +9,14 @@
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41614, -0.229065, -2.58044)
-size = Vector3(12.0637, 0.54187, 11.0623)
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="CSGCombiner3D"]
-transform = Transform3D(15.5833, 0, 0, 0, 2, 0, 0, 0, 4.03151, -2.41614, -0.229065, -2.58044)
-navigation_mesh = SubResource("NavigationMesh_aj6wu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.099916, -0.229065, 1.75772)
+size = Vector3(34.1745, 0.54187, 60.8139)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.631109, 0.775694, 0, -0.775694, 0.631109, 0, 1.88803, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_5bpsj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0348263, 0)
+transform = Transform3D(0.999999, 0, 0.00153589, 0, 1, 0, -0.00153589, 0, 0.999999, 0, 0.0348263, 5.95524)
 
 [node name="Enemy" parent="." instance=ExtResource("2_7oapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.166498, 0, -4.97742)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.166498, 0, -6.98237)

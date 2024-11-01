@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgdxujtuk6l4g"]
+
+[sub_resource type="GDScript" id="GDScript_s1ggj"]
+script/source = "extends Node3D
+
+# Variables for health
+var max_health: int = 100
+var current_health: int = max_health
+
+# Reference to the TextureProgressBar for health display (UI element)
+@export var health_bar: TextureProgressBar
+
+# Apply damage to this character (enemy or player)
+func take_damage(damage: int) -> void:
+	current_health -= damage
+	current_health = clamp(current_health, 0, max_health)
+	update_health_bar()
+	
+	if current_health <= 0:
+		die()
+
+# Update the health bar when health changes
+func update_health_bar() -> void:
+	if health_bar:
+		health_bar.value = float(current_health) / max_health * 100
+
+# Define what happens when the character dies
+func die() -> void:
+	queue_free()  # Remove the node from the scene, can be replaced with custom logic
+"
+
+[node name="Damageable" type="Node"]
+script = SubResource("GDScript_s1ggj")

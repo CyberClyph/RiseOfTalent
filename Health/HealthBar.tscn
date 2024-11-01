@@ -1,10 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi77bgckvp5lg"]
+[gd_scene load_steps=5 format=3 uid="uid://bi77bgckvp5lg"]
 
 [ext_resource type="Texture2D" uid="uid://da2d3uot1er7h" path="res://Health/HP.png" id="2_waehm"]
 [ext_resource type="Texture2D" uid="uid://cuqj3c3bammwo" path="res://Health/HP Border.png" id="3_qwkwm"]
 [ext_resource type="Texture2D" uid="uid://va2832m3cb8v" path="res://Health/HP Drain.png" id="4_usico"]
 
-[node name="HealthBar" type="TextureProgressBar"]
+[sub_resource type="GDScript" id="GDScript_mh2mf"]
+script/source = "# health_bar.gd
+extends TextureProgressBar
+
+@export var owner_damageable: Damageable  # Reference to the player or enemy (must extend Damageable)
+@export var health_text_label: Label  # Reference to the Label that displays the health text
+
+func _ready():
+	# Ensure owner_damageable is assigned
+	if owner_damageable != null:
+		set_max(owner_damageable.max_health)  # Set the max value to match the owner's max health
+		set_value(owner_damageable.current_health)  # Set the current value to match the owner's current health
+		update_health_text()  # Update the health text
+	else:
+		push_error(\"owner_damageable is not assigned.\")
+
+# Function to update the health bar when the owner takes damage
+func update_health_bar():
+	if owner_damageable != null:
+		set_value(owner_damageable.current_health)  # Update the value to match the current health
+		update_health_text()  # Update the health text display
+	else:
+		push_error(\"owner_damageable is not assigned.\")
+
+# Function to update the text on the health bar
+func update_health_text():
+	if health_text_label and owner_damageable != null:  # Check if the label and owner are assigned
+		health_text_label.text = str(owner_damageable.current_health) + \"/\" + str(owner_damageable.max_health)
+	else:
+		push_error(\"health_text_label or owner_damageable is not assigned.\")
+"
+
+[node name="HealthBar" type="TextureProgressBar" node_paths=PackedStringArray("health_text_label")]
 offset_left = 11.0
 offset_top = 6.0
 offset_right = 249.0
@@ -15,7 +47,16 @@ nine_patch_stretch = true
 texture_under = ExtResource("4_usico")
 texture_over = ExtResource("3_qwkwm")
 texture_progress = ExtResource("2_waehm")
+script = SubResource("GDScript_mh2mf")
+health_text_label = NodePath("Label")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 15.0
+offset_right = 226.0
+offset_bottom = 38.0
